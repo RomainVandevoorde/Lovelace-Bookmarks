@@ -32,7 +32,7 @@ Romain: Back-end, PHP & MySQL
 
 
 ## Assets
-### Mockup v1
+### Mockup
 [HERE V1](https://github.com/RomainVandevoorde/Lovelace-Bookmarks/ideas/ressources-v1.pdf)
 ### Ressources
-[Liste de ressources](https://github.com/pedroseromenho/ressources)
+[Ressources List](https://github.com/pedroseromenho/ressources)
