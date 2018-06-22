@@ -29,3 +29,6 @@ Romain: Back-end, PHP & MySQL
 **Romain**
 - Connect with Github
 - Routing & request validation
+
+## Mockup v1
+[HERE V1](https://github.com/RomainVandevoorde/Lovelace-Bookmarks/ideas/ressources-v1.pdf)
