@@ -22,6 +22,18 @@
       <li>Have the edit/delete/move forms on this page</li>
     </ul>
   </p>
+  <table>
+        <?php
+            require('db.php');
 
+            $rep = $bdd->query('SELECT * FROM `bookmarks`');
+            while ($data = $rep->fetch()) {
+            echo '<tr>';
+            echo '<td>'.$data['id'].'</td>';
+            echo '<td>'.$data['name'].'</td>';
+            echo '</tr>';
+            }
+        ?>
+    </table>
 </body>
 </html>
