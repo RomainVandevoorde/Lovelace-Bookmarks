@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <h1>MVP: </h1>
+  <h1>MVP</h1>
   <p>
     <ul>
       <li>List the bookmarks in the specified category</li>
