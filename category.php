@@ -33,6 +33,13 @@
             echo '<td>'.$data['name'].'</td>';
             echo '</tr>';
             }
+            $rep->closeCursor();
+        ?>
+        <?php
+            $id = mysql_real_escape_string($_POST['bookmarks']); // mettre ca avant ou après la query mysql ???
+            $requete = "SELECT * FROM bookmarks WHERE id = '$id' "; // or catergory TBD, Id = number donc utilitée de string ??
+            $name = mysql_real_escape_string($_POST['bookmarks']);
+            $requete = "SELECT * FROM bookmarks WHERE name = '$name' ";
         ?>
     </table>
 </body>

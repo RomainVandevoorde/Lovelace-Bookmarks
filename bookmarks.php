@@ -22,6 +22,7 @@
             echo '<td>'.$data['category_id'].'</td>';
             echo '</tr>';
             }
+            $rep->closeCursor();
         ?>
     </table>  
 </body>

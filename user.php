@@ -20,6 +20,13 @@
             echo '<td>'.$data['rights'].'</td>';
             echo '</tr>';
             }
+            $rep->closeCursor();
+
+        ?>
+
+        <?php
+            $github_id = mysql_real_escape_string($_POST['github-id']);
+            $requete = "SELECT * FROM users WHERE github-id = '$github_id' ";
         ?>
     </table>
 </body>
