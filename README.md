@@ -1,10 +1,10 @@
 # Lovelace-Bookmarks
 
 ## Rôles
-Pedro: Front-end, HTML & CSS
-Mostapha: Front-end, JS & AJAX
-Mohamed: Back-end, PHP & MySQL
-Romain: Back-end, PHP & MySQL
+- Pedro: Front-end, HTML & CSS
+- Mostapha: Front-end, JS & AJAX
+- Mohamed: Back-end, PHP & MySQL
+- Romain: Back-end, PHP & MySQL
 
 ## Tasks
 
