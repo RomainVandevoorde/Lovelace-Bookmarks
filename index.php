@@ -15,7 +15,9 @@
       <li>List latest bookmarks added</li>
     </ul>
   </p>
-
+  <?php
+    require('db.php');
+  ?>
  
 
 </body>
