@@ -16,17 +16,23 @@
     </ul>
   </p>
   <?php
+
+  ?>
+  <?php
     require('db.php');
-    $rep = $bdd->query('SELECT * FROM `bookmarks` LIMIT 0, 10');
+    // $rep = $bdd->query('SELECT * FROM `bookmarks` LIMIT 0, 10');
+    $req = $bdd->prepare('SELECT titre FROM `bookmarks` WHERE titre = ?');
+    // $req->execute(($_GET['titre']));
 
     echo '<p>Voici les 10 premières entrées de Bookmarks  :</p>'; // + categrorie ??
-    while ($data = $rep->fetch())  
+    while ($data = $req->fetch())  
       {
-        echo $data['bookmarks'] . '<br />';
+        echo $data['titre'] . '<br />';
       }
       
-    $rep->closeCursor();   /*
-    1- require sur chaque fichier ?
+    //$req->closeCursor();  
+    /* 
+      1- require sur chaque fichier ?
     2- access by localhost only for the index.php file, ...why ?
     3- niveau securité des qurey sql: utiliser un require sur toute les pages ou ajouter le morceau de code sur chaque page ?
     4- Dans le NEW DB l'utiliser ou trouver une methode plus simple si possible ?
