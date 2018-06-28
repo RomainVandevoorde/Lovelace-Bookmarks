@@ -1,19 +1,19 @@
 <?php
     error_reporting(E_ALL);
     try{
-        $bdd = new PDO('mysql:host=localhost;dbname=lovelace_bookmarks;charset=utf8', 'root', 'darkangel');
-    
-    
+        $bdd = new PDO('mysql:host=localhost;dbname=lovelace_bookmarks;charset=utf8', 'root', '');
+
+
     }
     catch(Exception $e) {
         die('Erreur : '.$e->getMessage());
-    
+
     }
 
 ?>
 
-<!--A ajouter dans bookmarks user category //( ou plutot index)  ?? 
-    plutot faire un require ?? ou possiblité d'avoir un conflit ?? 
+<!--A ajouter dans bookmarks user category //( ou plutot index)  ??
+    plutot faire un require ?? ou possiblité d'avoir un conflit ??
 -->
 <?php
 // h // ??
@@ -46,13 +46,13 @@
 //         }
 //     }elseif($_REQUEST['action_type'] == 'delete'){
 //         if(!empty($_GET['id'])){
-//             $condition = array('id' => $_GET['id']); // ??  
+//             $condition = array('id' => $_GET['id']); // ??
 //             $delete = $db->delete($tblName,$condition);
 //             $statusMsg = $delete?'Your url has been deleted successfully.':'Some problem occurred, please try again.';
 //             $_SESSION['statusMsg'] = $statusMsg;
 //             header("Location:index.php");
 //         }
-//     } // acollade et crochet rouge ??, header location ???, 
+//     } // acollade et crochet rouge ??, header location ???,
 // }
 
 ?>
