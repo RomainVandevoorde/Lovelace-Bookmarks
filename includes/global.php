@@ -16,9 +16,10 @@ if(isset($_SESSION['github_id']) && (!isset($_SESSION['user_id']) || !isset($_SE
 
   require_once 'db.php';
   $req = $bdd->prepare("SELECT * FROM users WHERE github_id = ?");
-  $data = $req->execute(array($_SESSION['github_id']));
+  $req->execute(array($_SESSION['github_id']));
+  $data = $req->fetch();
 
-  if(!$data) exit('DB request failed');
+  if($data === FALSE) exit('DB request failed');
   else {
     $_SESSION['user_id'] = $data['id'];
     $_SESSION['rights'] = $data['rights'];

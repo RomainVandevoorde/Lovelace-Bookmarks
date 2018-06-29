@@ -1,7 +1,7 @@
 <?php
 
-require "includes/global.php";
-require "db.php";
+require_once "includes/global.php";
+require_once "db.php";
 
 $template = $twig->load('category.html');
 
