@@ -27,7 +27,7 @@ $errors = array();
 // If there's no title or no url provided, exit script
 if(!isset($_POST['title']) || !isset($_POST['url'])) {
   $errors []= 'Insufficient data';
-  exit(json_encode('success' => false, 'errors' => $errors));
+  exit(json_encode(array('success' => false, 'errors' => $errors)));
 }
 
 // If there's no category, use 1 as default
