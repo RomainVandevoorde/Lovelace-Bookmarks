@@ -27,6 +27,12 @@ $errors = array();
 // If there's no title or no url provided, exit script
 if(!isset($_POST['title']) || !isset($_POST['url'])) {
   $errors []= 'Insufficient data';
+  exit(json_encode('success' => false, 'errors' => $errors));
+}
+
+// If there's no category, use 1 as default
+if(!isset($_POST['category'])) {
+  $category = 1;
 }
 
 
@@ -44,6 +50,8 @@ if(isset($_POST['description'])) {
   $desc_length = strlen($_POST['description']);
   if($desc_length > 300) $errors []= 'This description is too long';
 }
+// If no description was posted, put in an empty string
+$description = isset($_POST['description']) ? $_POST['description'] : "";
 
 
 if(!empty($errors)) {
@@ -54,10 +62,7 @@ else echo json_encode(array('success' => true));
 
 require '../db.php';
 
-// TODO connect to databse
-
-// TODO get POST data & validate it
-
-// TODO add the bookmark if the POST data is valid
+$req = $bdd->prepare("INSERT INTO bookmarks (titre, url, description, user_added, category_id) VALUES (?, ?, ?, ?, ?)");
+$req->execute(array($_POST['title'], $_POST['url'], $description, 1, 1));
 
 ?>

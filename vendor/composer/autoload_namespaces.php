@@ -7,6 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'PayPal' => array($vendorDir . '/paypal/rest-api-sdk-php/lib'),
-    'Hybrid' => array($vendorDir . '/hybridauth/hybridauth/hybridauth'),
 );
