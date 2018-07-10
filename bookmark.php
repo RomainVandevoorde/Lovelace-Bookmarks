@@ -70,7 +70,8 @@ if(isset($_GET['action'])) {
 
       break;
     default:
-      echo 'Invalid action';
+      // echo 'Invalid action';
+      header('Location: '.__DIR__.'/');
       break;
   }
 
@@ -94,6 +95,7 @@ elseif(isset($_GET['id'])) {
 }
 
 else {
+header('Location: ./bookmarks.php');
   exit ('Invalid action');
 }
 

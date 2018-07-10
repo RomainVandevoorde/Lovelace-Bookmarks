@@ -20,6 +20,7 @@
         <th>Description</th>
         <th>User</th>
         <th>Category</th>
+        <th>Actions</th>
       </tr>
         <?php
             require('db.php');
@@ -33,6 +34,7 @@
             echo '<td>'.$data['description'].'</td>';
             echo '<td>'.$data['user_added'].'</td>';
             echo '<td>'.$data['category_id'].'</td>';
+            echo '<td><a href="bookmark.php?action=edit&id='.$data['id'].'">Edit</a> <a href="?action=delete&id='.$data['id'].'">Delete</a></td>';
             echo '</tr>';
             }
             $rep->closeCursor();

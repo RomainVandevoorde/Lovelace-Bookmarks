@@ -29,4 +29,4 @@ if(isset($_SESSION['github_id']) && (!isset($_SESSION['user_id']) || !isset($_SE
 
 }
 
-require __DIR__.'/auth-fct.php';
+require_once __DIR__.'/auth-fct.php';
