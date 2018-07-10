@@ -1,6 +1,6 @@
 <?php
 
-function exitJson($success, $errors = '') {
+function exitJson($success, $errors = 'Unexpected Error') {
   if($success) exit(json_encode(array('success' => TRUE)));
   else {
     if(gettype($errors) !== 'array') $errors = array($errors);
@@ -11,8 +11,8 @@ function exitJson($success, $errors = '') {
 function validateUrl($url) {
   $parse = parse_url($url);
 
+  // Check the URL's protocol
   if(!isset($parse['scheme'])) $url = 'https://'.$url;
-
   elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') return FALSE;
 
   if(filter_var($url, FILTER_VALIDATE_URL) === false) return false;
@@ -73,7 +73,7 @@ require_once __DIR__.'/../db.php';
 
 // Proceed with insertion
 $req = $bdd->prepare("INSERT INTO bookmarks (titre, url, description, user_added, category_id) VALUES (?, ?, ?, ?, ?)");
-if($req->execute(array($_POST['title'], $_POST['url'], $description, 1, 1))) {
+if($req->execute(array($_POST['title'], $_POST['url'], $description, $_SESSION['user_id'], 1))) {
   exitJson(TRUE);
 }
 else {
