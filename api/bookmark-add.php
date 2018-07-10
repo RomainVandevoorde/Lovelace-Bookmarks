@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+require_once __DIR__.'/../includes/auth-fct.php';
+
+if(!hasRights(1)) exit('Insufficient Rights');
+
 function validateUrl($url) {
 
   $parse = parse_url($url);
@@ -9,17 +15,7 @@ function validateUrl($url) {
 
   if(filter_var($url, FILTER_VALIDATE_URL) === false) return false;
 
-  // var_dump(parse_url($url));
-  // echo '<br>PHP_URL_SCHEME : '.parse_url($url, PHP_URL_SCHEME).'<br>';
-  // echo 'PHP_URL_USER : '.parse_url($url, PHP_URL_USER).'<br>';
-  // echo 'PHP_URL_PASS : '.parse_url($url, PHP_URL_PASS).'<br>';
-  // echo 'PHP_URL_HOST : '.parse_url($url, PHP_URL_HOST).'<br>';
-  // echo 'PHP_URL_PORT : '.parse_url($url, PHP_URL_PORT).'<br>';
-  // echo 'PHP_URL_PATH : '.parse_url($url, PHP_URL_PATH).'<br>';
-  // echo 'PHP_URL_QUERY : '.parse_url($url, PHP_URL_QUERY).'<br>';
-  // echo 'PHP_URL_FRAGMENT : '.parse_url($url, PHP_URL_FRAGMENT).'<br>';
   return true;
-
 }
 
 $errors = array();
@@ -55,7 +51,7 @@ $description = isset($_POST['description']) ? $_POST['description'] : "";
 
 
 if(!empty($errors)) {
-  echo json_encode(array('success' => false, 'errors' => $errors));
+  exit(json_encode(array('success' => false, 'errors' => $errors)));
 }
 else echo json_encode(array('success' => true));
 
