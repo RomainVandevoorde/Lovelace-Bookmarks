@@ -1,29 +1,43 @@
 <?php
 
+function exitJson($success, $errors = '') {
+  if($success) exit(json_encode(array('success' => TRUE)));
+  else {
+    if(gettype($errors) !== 'array') $errors = array($errors);
+    exit(json_encode(array('success' => FALSE, 'errors' => $errors)));
+  }
+}
+
+function validateUrl($url) {
+  $parse = parse_url($url);
+
+  if(!isset($parse['scheme'])) $url = 'https://'.$url;
+
+  elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') return FALSE;
+
+  if(filter_var($url, FILTER_VALIDATE_URL) === false) return false;
+
+  return TRUE;
+}
+
+// *******************
+//
+// START SCRIPT
+//
+// *******************
+
+
 session_start();
 
 require_once __DIR__.'/../includes/auth-fct.php';
 
-if(!hasRights(1)) exit('Insufficient Rights');
-
-function validateUrl($url) {
-
-  $parse = parse_url($url);
-
-  if(!isset($parse['scheme'])) $url = 'https://'.$url;
-  elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') $url = 'https://'.$parse['path'];
-
-  if(filter_var($url, FILTER_VALIDATE_URL) === false) return false;
-
-  return true;
-}
+if(!hasRights(1)) exitJson(FALSE, 'Insufficient Rights');
 
 $errors = array();
 
 // If there's no title or no url provided, exit script
 if(!isset($_POST['title']) || !isset($_POST['url'])) {
-  $errors []= 'Insufficient data';
-  exit(json_encode(array('success' => false, 'errors' => $errors)));
+  exitJson(FALSE, 'Insufficient data');
 }
 
 // If there's no category, use 1 as default
@@ -49,16 +63,21 @@ if(isset($_POST['description'])) {
 // If no description was posted, put in an empty string
 $description = isset($_POST['description']) ? $_POST['description'] : "";
 
-
+// Exit if there are errors
 if(!empty($errors)) {
-  exit(json_encode(array('success' => false, 'errors' => $errors)));
+  exitJson(FALSE, $errors);
 }
-else echo json_encode(array('success' => true));
 
 
-require '../db.php';
+require_once __DIR__.'/../db.php';
 
+// Proceed with insertion
 $req = $bdd->prepare("INSERT INTO bookmarks (titre, url, description, user_added, category_id) VALUES (?, ?, ?, ?, ?)");
-$req->execute(array($_POST['title'], $_POST['url'], $description, 1, 1));
+if($req->execute(array($_POST['title'], $_POST['url'], $description, 1, 1))) {
+  exitJson(TRUE);
+}
+else {
+  exitJson(FALSE, 'Insertion failure');
+}
 
 ?>
