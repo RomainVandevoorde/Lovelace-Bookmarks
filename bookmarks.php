@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style media="screen">
+      td {
+        padding:10px;
+      }
+    </style>
 </head>
 <body>
     <table>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>URL</th>
+        <th>Description</th>
+        <th>User</th>
+        <th>Category</th>
+      </tr>
         <?php
             require('db.php');
 
@@ -24,6 +37,7 @@
             }
             $rep->closeCursor();
         ?>
-    </table>  
+    </table>
+    <a href="bookmark.php?action=add">Create a new bookmark</a>
 </body>
 </html>

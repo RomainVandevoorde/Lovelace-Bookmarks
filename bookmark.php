@@ -1,12 +1,15 @@
 <?php
 
-require 'includes/global.php';
+require __DIR__.'/includes/global.php';
 
 if(isset($_GET['action'])) {
 
   switch ($_GET['action']) {
     case 'add':
       echo $twig->render('form-bookmark-add.html');
+      break;
+    case 'edit':
+      // TODO edit form
       break;
     default:
       echo 'Invalid action';
@@ -15,6 +18,7 @@ if(isset($_GET['action'])) {
 
 }
 
+// If no action but there's an ID, display bookmark
 elseif(isset($_GET['id'])) {
 
   require_once 'db.php';
