@@ -15,9 +15,9 @@ function validateUrl($url) {
   if(!isset($parse['scheme'])) $url = 'https://'.$url;
   elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') return FALSE;
 
-  if(filter_var($url, FILTER_VALIDATE_URL) === false) return false;
+  if(filter_var($url, FILTER_VALIDATE_URL) === false) return FALSE;
 
-  return TRUE;
+  return $url;
 }
 
 // *******************
@@ -53,7 +53,8 @@ if($title_length < 2 || $title_length > 100) {
 }
 
 // Validate URL
-if(!validateUrl($_POST['url'])) $errors[]= 'Invalid URL';
+$url = validateUrl($_POST['url']);
+if($url === FALSE) $errors[]= 'Invalid URL';
 
 // Validate description
 if(isset($_POST['description'])) {
@@ -73,7 +74,7 @@ require_once __DIR__.'/../db.php';
 
 // Proceed with insertion
 $req = $bdd->prepare("INSERT INTO bookmarks (titre, url, description, user_added, category_id) VALUES (?, ?, ?, ?, ?)");
-if($req->execute(array($_POST['title'], $_POST['url'], $description, $_SESSION['user_id'], 1))) {
+if($req->execute(array($_POST['title'], $url, $description, $_SESSION['user_id'], 1))) {
   exitJson(TRUE);
 }
 else {

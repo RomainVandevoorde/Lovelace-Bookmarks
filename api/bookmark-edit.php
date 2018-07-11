@@ -16,13 +16,14 @@ if($id < 1) exit('Invalid ID');
 
 // Check DB
 require_once __DIR__.'/../db.php';
+
 $req = $bdd->prepare("SELECT * FROM bookmarks WHERE id = ?");
 $req->execute(array($id));
 $data = $req->fetch();
 if(!$data) exit("This bookmark doesn't exist");
 
 // Check user rights
-if($_SESSION['rights'] < 2 && $data['user_added'] !== $_SESSION['user_id']) exit("You don't have the rights to edit this bookmark");
+if($_SESSION['rights'] < 2 && intval($data['user_added']) !== $_SESSION['user_id']) exit("You don't have the rights to edit this bookmark");
 
 
 $up_title = isset($_POST['title']) ? $_POST['title'] : $data['titre'];

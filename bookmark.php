@@ -27,9 +27,9 @@ if(isset($_GET['action'])) {
       $req->execute(array($id));
       $data = $req->fetch();
       if(!$data) exit("This bookmark doesn't exist");
-
+      
       // Check user rights
-      if($_SESSION['rights'] < 2 && $data['user_added'] !== $_SESSION['user_id']) exit("You don't have the rights to edit this bookmark");
+      if($_SESSION['rights'] < 2 && intval($data['user_added']) !== $_SESSION['user_id']) exit("You don't have the rights to edit this bookmark");
 
       // Output form if everything is ok
       echo $twig->render('forms/bookmark-edit.html', $data);
@@ -70,8 +70,9 @@ if(isset($_GET['action'])) {
 
       break;
     default:
-      // echo 'Invalid action';
-      header('Location: '.__DIR__.'/');
+      echo 'Invalid action';
+      exit;
+      // header('Location: '.__DIR__.'/');
       break;
   }
 
@@ -80,7 +81,7 @@ if(isset($_GET['action'])) {
 // If no action but there's an ID, display bookmark
 elseif(isset($_GET['id'])) {
 
-  require_once 'db.php';
+  require_once __DIR__.'/db.php';
 
   $bookmark_id = (int) $_GET['id'];
 
@@ -95,7 +96,7 @@ elseif(isset($_GET['id'])) {
 }
 
 else {
-header('Location: ./bookmarks.php');
+// header('Location: ./bookmarks.php');
   exit ('Invalid action');
 }
 
