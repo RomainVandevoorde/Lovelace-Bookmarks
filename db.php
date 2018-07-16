@@ -10,12 +10,7 @@
 
     }
 
-?>
 
-<!--A ajouter dans bookmarks user category //( ou plutot index)  ??
-    plutot faire un require ?? ou possiblité d'avoir un conflit ??
--->
-<?php
 // h // ??
 // include 'db.php'; // ???
 // $db = new DB(); // new db ? trop de changement par rapport à l'ancien et surtout pas vraiment de lien entre les deux, plus ajouts que changement.

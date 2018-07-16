@@ -10,9 +10,11 @@
 </p>
 
 <div>
-  <p>Voici les 10 premiers bookmarks mothafucka'</p>
-  {% for bookmark in data %}
-  <li>{{ bookmark.titre }}</li>
-  {% endfor %}
+  <p>Voici les catégories mothafucka'</p>
+  <ul>
+    {% for category in categories %}
+    <li><a href="category2.php?id={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
 {% endblock %}
