@@ -1,0 +1,166 @@
+*{
+    box-sizing: content-box;
+}
+
+html, body{
+    max-height: 100vh;
+}
+
+header{
+    position: absolute;
+}
+
+.index h1{
+    padding: 30px;
+    padding-bottom: 5px;
+    font-size: 40px;  
+    font-weight: bold;
+}
+
+.index nav{
+    padding: 25px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+
+.index nav a{
+    margin-right: 10px;
+}
+
+.column{
+    max-height: 100vh;
+    overflow-y: auto;
+    min-height: 0px;
+}
+
+.index{
+    background-color: white;
+}
+
+.indexList{
+    padding: 100px;
+    padding-top: 30px;
+}
+
+.indexList h2{
+    font-weight: bolder;
+    margin-bottom: 30px;
+    font-size: 30px;
+    margin-left: -70px;
+}
+
+.indexList ol{
+    padding-left: 0px;
+    font-size: 25px;
+}
+
+.indexList ol li{
+    margin-bottom: 5px;
+}
+
+.indexList a.active {
+    text-decoration: underline;
+}
+
+.content{
+    background-color: #a0a0a01f;
+    box-shadow: -4px 0px 20px 0px  #A9A9A9;
+    z-index: 10;
+}
+
+.contentList{
+    padding: 40px;
+    padding-top: 32px;
+    font-size: 20px;
+    color: black;
+} 
+
+.contentList h2{
+    padding: 10px;
+    box-sizing: content-box;
+    margin-bottom: 20px;
+    padding-bottom: 15px; 
+    border-bottom: 1px solid black;
+}   
+
+.contentList h4{
+    box-sizing: content-box;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 50px;
+}   
+
+.contentList ul{
+    margin-top: 25px;
+}
+
+.contentList li{
+    margin-bottom: 20px;
+}
+
+.contentList li a {
+    font-size: 20px;
+}
+
+.create{
+    background-color: #777777;
+    box-shadow: -4px 0px 20px 0px  #A9A9A9;
+    z-index: 100;
+
+}
+
+.content li+li{
+    margin-top: 0em;
+}
+
+nav.breadcrumb{
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.breadcrumb ul{
+    margin-left: 2px;
+    margin-top: 20px;
+}
+
+.breadcrumb ul li{
+    margin-bottom: 0px;
+}
+
+.button{
+    padding-bottom: 0em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0em;
+}
+
+.contentList iframe{
+    padding-top: 20px;
+}
+/* h2.hello{
+    font-size: 6.5em;
+    padding: 20px;  
+} */
+
+.add{
+    width: 70%;
+    padding-left: 5px; 
+}
+
+.control-container{
+    padding-top: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.field-container{
+    padding-top: 30px;
+}
+
+.buttons-container{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between; 
+    width: 40%;
+}

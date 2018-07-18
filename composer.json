@@ -1,0 +1,8 @@
+{
+    "name": "Lovelace-Bookmarks",
+    "description": "community-sourced bookmarks",
+    "require": {
+        "twig/twig": "^2.0",
+        "hybridauth/hybridauth": "~3.0@RC"
+    }
+}

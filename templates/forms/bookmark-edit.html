@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+<form action="api/bookmark-edit.php" method="post">
+  <input type="hidden" name="id" value="{{ id }}">
+  <label for="">Titre: <input type="text" name="title" value="{{ titre ?: '' }}"></label><br>
+  <label for="">URL: <input type="text" name="url" value="{{ url ?: '' }}"></label><br>
+  <label for="">Catégorie: <input type="number" name="category" value="{{ category_id ?: 1 }}"></label><br>
+  <label for="">Description: <textarea name="description" rows="8" cols="80">{{ description ?: '' }}</textarea></label><br>
+  <input type="submit" value="Send">
+</form>
+{% endblock %}
