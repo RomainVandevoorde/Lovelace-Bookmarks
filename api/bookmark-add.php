@@ -26,7 +26,6 @@ function validateUrl($url) {
 //
 // *******************
 
-
 session_start();
 
 require_once __DIR__.'/../includes/auth-fct.php';
