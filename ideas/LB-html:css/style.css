@@ -1,0 +1,340 @@
+*{
+    box-sizing: content-box;
+}
+
+html, body{
+    max-height: 100vh;
+}
+
+header{
+    position: absolute;
+}
+
+.index h1{
+    padding: 30px;
+    padding-bottom: 5px;
+    font-size: 40px;  
+    font-weight: bold;
+}
+
+.index h1 a{
+    color: black;
+}
+
+.index h1 a:hover{
+    color: #3273dc;
+}
+
+
+.index nav{
+    padding: 25px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+
+.index nav a{
+    margin-right: 10px;
+}
+
+.navbar-burger{
+    display: none;
+}
+
+.column{
+    max-height: 100vh;
+    overflow-y: auto;
+    min-height: 0px;
+}
+
+.index{
+    background-color: white;
+}
+
+.index nav a.button i{
+   margin-right: 5px;
+}
+
+
+.indexList{
+    padding: 100px;
+    padding-top: 30px;
+    padding-right: 10px;
+}
+
+.indexList h2{
+    font-weight: bolder;
+    margin-bottom: 30px;
+    font-size: 30px;
+    margin-left: -70px;
+}
+
+.indexList ol{
+    padding-left: 0px;
+    font-size: 25px;
+}
+
+.indexList ol li{
+    margin-bottom: 5px;
+}
+
+.indexList a.active {
+    text-decoration: underline;
+}
+
+.content{
+    background-color: #a0a0a01f;
+    box-shadow: -4px 0px 20px 0px  #A9A9A9;
+    z-index: 10;
+}
+
+.contentList{
+    padding: 40px;
+    padding-top: 32px;
+    font-size: 20px;
+    color: black;
+} 
+
+.contentList h2{
+    padding: 10px;
+    box-sizing: content-box;
+    margin-bottom: 20px;
+    padding-bottom: 15px; 
+    border-bottom: 1px solid black;
+}   
+
+.contentList h4{
+    box-sizing: content-box;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 50px;
+}   
+
+.contentList ul{
+    margin-top: 25px;
+}
+
+.contentList li{
+    margin-bottom: 20px;
+}
+
+.contentList li a {
+    font-size: 20px;
+}
+
+.create{
+    background-color: #777777;
+    box-shadow: -4px 0px 20px 0px  #A9A9A9;
+    z-index: 100;
+
+}
+
+.content li+li{
+    margin-top: 0em;
+}
+
+nav.breadcrumb{
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.breadcrumb ul{
+    margin-left: 2px;
+    margin-top: 40px;
+}
+
+.breadcrumb ul li{
+    margin-bottom: 0px;
+}
+
+.button{
+    padding-bottom: 0em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0em;
+}
+
+.contentList iframe{
+    padding-top: 20px;
+}
+
+.add{
+    width: 70%;
+    padding-left: 5px; 
+}
+
+.control-container{
+    padding-top: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.field-container{
+    padding-top: 30px;
+}
+
+.buttons-container{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between; 
+    width: 40%;
+}
+
+.buttons-container .control button a{
+    color: black;
+}
+
+p.topic{
+    padding-left: 10px;
+    padding-top: 15px;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+ul.edit{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+ul.edit li{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+li.edit{
+    list-style-type: none;
+}
+
+li.edit a.button{
+    margin-left: 5px;
+    margin-top: 9px;
+}
+
+ul.credits{
+    margin-top: 10px;
+}    
+
+ul.credits li{
+    margin-bottom: 10px;
+}
+
+nav.indexLinks{
+    margin-left: 0px;
+}
+
+.notification{
+    position: absolute;
+    width: 15%;
+    right: 15px;
+    top:15px;
+    z-index: 200;
+    box-shadow: -2px 2px 8px 0px rgb(219, 219, 219);
+}
+
+.delete::before, .modal-close::before {
+    width: 38%;
+}    
+
+section.log{
+    background-color: #a0a0a01f;
+}
+
+.hero-body .notification{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    height: 60%;
+    width: 25%;
+}
+
+.gif{
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56%;
+}
+
+.gif iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .index nav{
+        display: none;
+    }
+
+    .index h1{
+        margin-left: 30px;
+    }
+
+    .navbar-burger{
+        display: inline;
+        position: absolute;
+        top: 35px;
+        left: 10px;
+        color: black;
+    }
+
+    .navbar-burger span {
+        height: 2px;
+    }
+
+    .indexList {
+        padding-top: 20px;
+        padding-left: 60px;
+        padding-right: 10px;
+    }
+
+    .indexList h2 {
+        margin-left: -24px;
+    }    
+
+}    
+
+@media screen and (max-width: 920px) {
+    .index h1{
+        font-size: 30px;
+        padding-top: 9px;
+        padding-left: 70px;
+        margin-left: 0px;
+        background-color: #3273dc;
+        width: 100%;
+        position: absolute;
+        /* box-shadow: -4px 0px 10px 0px  #A9A9A9; */
+    }
+
+    .index h1 a{
+        color: white;
+    }
+    .navbar-burger{
+        display: inline;
+        position: absolute;
+        top: 6px;
+        left: 15px;
+        color: white;
+    }
+
+    .indexList{
+        padding-top: 75px;
+        padding-left: 55px;
+    }
+    .contentList {
+        padding: 20px;
+        padding-top: 10px;
+    } 
+    
+    .content{
+        box-shadow: none;
+    }
+    nav.breadcrumb {
+        margin-left: 0px;   
+    }     
+
+    .contentList h4 {
+        margin-left: 0px;
+    }    
+}
