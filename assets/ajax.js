@@ -74,7 +74,6 @@ function request(method,action,parameters,callback) {
 
 function reply(response){
   // à définir :p
-  console.log(response);
   let json = JSON.parse(response);
   if(json.success){
     console.log("Champagne!!!!!!!");
