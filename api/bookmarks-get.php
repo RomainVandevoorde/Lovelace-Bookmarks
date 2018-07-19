@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 require_once __DIR__."/../db.php";
 
 if(isset($_GET['cat'])) {

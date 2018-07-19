@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 function exitJson($success, $errors = 'Unexpected Error') {
   if($success) exit(json_encode(array('success' => TRUE)));
   else {
@@ -25,6 +27,7 @@ function validateUrl($url) {
 // START SCRIPT
 //
 // *******************
+
 
 session_start();
 
