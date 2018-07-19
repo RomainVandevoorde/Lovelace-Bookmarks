@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>MVP: List the categories</h1>
+<h2>Secondary objectives:</h2>
+<p>
+  <ul>
+    <li>List latest bookmarks added</li>
+  </ul>
+</p>
+
+<div>
+  <p>Voici les catégories mothafucka'</p>
+  <ul>
+    {% for category in categories %}
+    <li><a href="category2.php?id={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
