@@ -29,12 +29,13 @@
 
       <h1><a href="index.php">Lovelace 2.0</a></h1>
       <nav>
-        <a class="button" href="about.php">About</a>
         {% if user is defined %}
         <a class="button" href="bookmark.php?action=add">Add</i></a>
         <a class="button desktop" href="profile.php">Profile</a>
+          <a class="button" href="about.php">About</a>
         <a class="button" href="logout.php"><i class="fab fa-github"></i>Log Out</a>
         {% else %}
+          <a class="button" href="about.php">About</a>
         <a class="button is-info" href="connect-github.php"><i class="fab fa-github"></i>Log In</a>
         {% endif %}
       </nav>
