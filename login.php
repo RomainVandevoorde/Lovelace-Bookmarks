@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__.'/includes/global.php';
+session_start();
 
-if(isset($_SESSION['user_id'])) exit($twig->render('login.html', array('haerror'=>'Already connected')));
-if(isset($_SESSION['github_id'])) exit($twig->render('login.html', array('haerror'=>'Awaiting validation')));
+if(isset($_SESSION['user_id'])) exit('<p>Already connected</p><p><a href="./">Back to home</a></p>');
+if(isset($_SESSION['github_id'])) exit('<p>Awaiting validation</p><p><a href="./">Back to home</a></p>');
 
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/includes/hybridauth-config.php';
@@ -13,13 +13,13 @@ $github = new Hybridauth\Provider\GitHub($config);
 try {
   $github->authenticate();
 } catch(Exception $e) {
-  exit($twig->render('login.html', array('haerror'=>'Authentication failed<br>'.$e->getMessage())));
+  exit('<p>Authentication failed</p><p>'.$e->getMessage().'</p>');
 }
 
 try {
   $userProfile = $github->getUserProfile();
 } catch(Exception $e) {
-    exit($twig->render('login.html', array('haerror'=>'Failed to fetch profile<br>'.$e->getMessage())));
+  exit('<p>Failed to fetch profile</p><p>'.$e->getMessage().'</p>');
 }
 
 echo '<p>Github Auth: Success</p>';
