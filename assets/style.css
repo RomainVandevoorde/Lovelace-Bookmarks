@@ -18,7 +18,7 @@ header{
 }
 
 .index h1 a{
-    color: black;
+    color: #4a4a4a;
 }
 
 .index h1 a:hover{
@@ -34,10 +34,7 @@ header{
 
 .index nav a{
     margin-right: 10px;
-}
-
-.navbar-burger{
-    display: none;
+    margin-bottom: 10px;
 }
 
 .column{
@@ -82,7 +79,7 @@ header{
 }
 
 .content{
-    background-color: #a0a0a01f;
+    background-color: #f3f3f3;
     box-shadow: -4px 0px 20px 0px  #A9A9A9;
     z-index: 10;
 }
@@ -91,15 +88,15 @@ header{
     padding: 40px;
     padding-top: 32px;
     font-size: 20px;
-    color: black;
-} 
+    color: #4a4a4a;
+}
 
 .contentList h2{
     padding: 10px;
     box-sizing: content-box;
     margin-bottom: 20px;
     padding-bottom: 15px; 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #4a4a4a;
 }   
 
 .contentList h4{
@@ -162,6 +159,10 @@ nav.breadcrumb{
     padding-left: 5px; 
 }
 
+.add .control{
+    margin-right: 20px;
+}
+
 .control-container{
     padding-top: 10px;
     width: 70%;
@@ -181,7 +182,7 @@ nav.breadcrumb{
 }
 
 .buttons-container .control button a{
-    color: black;
+    color: #4a4a4a;
 }
 
 p.topic{
@@ -237,7 +238,7 @@ nav.indexLinks{
 }    
 
 section.log{
-    background-color: #a0a0a01f;
+    background-color: #f3f3f3;
 }
 
 .hero-body .notification{
@@ -261,74 +262,123 @@ section.log{
     position: absolute;
 }
 
+.indexLinks ul li.mobile{
+    display: none;
+}
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
+    .indexList ol {
+        margin-left: -45px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .index{
+        padding-bottom: 0px;
+    }
+
     .index nav{
-        display: none;
+        float: right;
+        padding-top: 15px;
+    }
+
+    .index nav a{
+        float: right;
+        margin-right: 0px;
+        margin-left: 10px;
     }
 
     .index h1{
-        margin-left: 30px;
-    }
-
-    .navbar-burger{
-        display: inline;
-        position: absolute;
-        top: 35px;
-        left: 10px;
-        color: black;
-    }
-
-    .navbar-burger span {
-        height: 2px;
-    }
-
-    .indexList {
-        padding-top: 20px;
-        padding-left: 60px;
-        padding-right: 10px;
-    }
-
-    .indexList h2 {
-        margin-left: -24px;
-    }    
-
-}    
-
-@media screen and (max-width: 920px) {
-    .index h1{
-        font-size: 30px;
+        font-size: 40px;
         padding-top: 9px;
-        padding-left: 70px;
+        padding-left: 30px;
         margin-left: 0px;
         background-color: #3273dc;
         width: 100%;
         position: absolute;
+        padding-top: 5px;
         /* box-shadow: -4px 0px 10px 0px  #A9A9A9; */
     }
 
     .index h1 a{
         color: white;
+        padding-top: 10px;
     }
-    .navbar-burger{
-        display: inline;
-        position: absolute;
-        top: 6px;
-        left: 15px;
-        color: white;
+
+    .indexList h2 {
+        margin-left: 30px;
+        font-size: 40px;
+        margin-bottom: 0px;
+        float: left;
+    } 
+
+    .indexList h2::after {
+        background-image: url('img/chevron-down-solid.svg');
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 30px; 
+        height: 22px;
+        margin-left: 10px;
+        content:"";
     }
 
     .indexList{
-        padding-top: 75px;
-        padding-left: 55px;
+        padding: 0px;
+        padding-top: 68px;
     }
+
+    .indexList ol{
+        display: none;
+    }
+
+    /* IF INDEX ITS OPEN */
+
+    /* .indexList ol{
+        padding-top: 75px;
+        margin-left: 55px;
+        padding-bottom: 20px;
+    }
+
+    .indexList h2::after {
+        background-image: url('img/chevron-up-solid.svg');
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 30px; 
+        height: 22px;
+        margin-left: 10px;
+        content:"";
+    } */
+
     .contentList {
         padding: 20px;
         padding-top: 10px;
     } 
+
+    .contentList p{
+        padding-left: 10px;
+        padding-right: 10px;
+    } 
+
+    .contentList h5{
+        padding-left: 10px;
+        padding-right: 10px;
+    } 
+
+    .contentList .field{
+        display: block;
+        right: 35px;
+    }
+    .content h2:not(:first-child) {
+        margin-top: -13px;
+    }
     
     .content{
         box-shadow: none;
+        margin-top: 0px;
     }
     nav.breadcrumb {
         margin-left: 0px;   
@@ -336,5 +386,101 @@ section.log{
 
     .contentList h4 {
         margin-left: 0px;
+    }
+
+    .indexLinks ul li.mobile{
+        display: inherit;
+    }
+
+    a.desktop{
+        display: none;
+    }
+
+    .index h1 a:hover{
+        color: rgb(223, 223, 223);
+    }
+
+    .control-container{
+        padding-top: 10px;
+        width: 50%;
+        display: flex;
+        justify-content: space-between; 
+    }
+
+    .add{
+        width: 94%;
+        padding-left: 5px; 
+    }
+
+    .buttons-container{
+        width: 30%;
+        margin-right: 20px;
+    }
+
+    .notification{
+        position: absolute;
+        width: 35%;
     }    
+}
+
+@media screen and (max-width: 640px) {
+ html{
+     background-color: #f3f3f3;
+ }   
+ .index h1{
+        right: 0;
+        left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        width: auto;
+    }
+.indexList h2{
+    margin-left: 20px;
+}    
+
+
+.columns{
+    margin-right: 0em;
+}
+
+.contentList{
+    margin-left: 5px;
+    margin-right: -5px;
+    padding: 10px;
+}
+
+.index nav{
+    padding-right: 10px;
+}
+
+ul.edit{
+    margin-left: 10px;
+    list-style: none;
+}
+
+ul.edit li{
+    flex:1;
+}
+
+ul.edit li p{
+    padding-left: 0px;
+}
+
+ul.edit li.edit{
+    margin-right: 0px;
+}
+
+a.titleMobile{
+    display: block;
+}
+
+}
+
+@media screen and (max-width: 500px) {
+
+.index h1{
+font-size: 1.3em;
+padding: 19.5px;
+}
+
 }
