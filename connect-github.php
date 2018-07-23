@@ -22,8 +22,6 @@ try {
   exit('<p>Failed to fetch profile</p><p>'.$e->getMessage().'</p>');
 }
 
-echo '<p>Github Auth: Success</p>';
-
 require_once __DIR__.'/db.php';
 
 $req_exists = $bdd->prepare("SELECT * FROM users WHERE github_id = ?");

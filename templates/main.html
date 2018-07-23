@@ -32,10 +32,10 @@
         <a class="button" href="about.php">About</a>
         {% if user is defined %}
         <a class="button" href="bookmark.php?action=add">Add</i></a>
-        <a class="button desktop" href="profile.php">Edit</a>
+        <a class="button desktop" href="profile.php">Profile</a>
         <a class="button" href="logout.php"><i class="fab fa-github"></i>Log Out</a>
         {% else %}
-        <a class="button is-info" href="login.php"><i class="fab fa-github"></i>Log In</a>
+        <a class="button is-info" href="connect-github.php"><i class="fab fa-github"></i>Log In</a>
         {% endif %}
       </nav>
       {{ include('categories-v2.html') }}
@@ -45,6 +45,9 @@
       <div class="contentList">
         <h2 class="hello">Hey, looking for something?</h2>
         <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
+        {% if GET.welcome is defined %}
+          <div>{{ GET.welcome }}</div>
+        {% endif %}
       </div>
       {% endblock %}
     </section>
