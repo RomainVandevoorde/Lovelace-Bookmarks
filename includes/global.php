@@ -43,3 +43,27 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['rights'])) {
 $twig->addGlobal('GET', $_GET);
 
 require_once __DIR__.'/auth-fct.php';
+
+// ********************
+// FONCTIONS
+// ********************
+
+function JSredirect($url) {
+  ?>
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Redirect</title>
+    </head>
+    <body>
+      <script type="text/javascript">
+        window.onload = () => {
+          window.location.replace("<?php echo $url; ?>");
+        }
+      </script>
+    </body>
+  </html>
+  <?php
+  exit;
+}

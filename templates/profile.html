@@ -4,8 +4,12 @@
 <div class="contentList">
 
   {% if user is defined %}
-  <h2 class="hello">Hey {{ user.name }}, welcome!</h2>
-  <div class="gif"><iframe src="https://giphy.com/embed/rDDv72OIYB39K"></iframe></div>
+    {% if welcome is defined %}
+    <h2 class="hello">Hey {{ user.name }}, welcome back !</h2>
+    <div class="gif"><iframe src="https://giphy.com/embed/rDDv72OIYB39K"></iframe></div>
+    {% else %}
+    <h2 class="hello">Hello, {{ user.name }} !</h2>
+    {% endif %}
   <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
     <ul>
       <li><a href="#">Github Profile</a></li>
@@ -16,8 +20,20 @@
   </nav>
   {% endif %}
 
-  {% if haerror is defined %}
-    <p>{{ haerror }}</p>
+  {% if bookmarks is defined %}
+  <h4>Here are your bookmarks</h4>
+  <ul>
+    {% for bookmark in bookmarks %}
+    <li>
+      <a href="{{ bookmark.url }}">{{ bookmark.titre }}</a>
+      <p>{{ bookmark.description }}</p>
+    </li>
+    <li class="edit">
+        <a class="button" href="edit_post.html"><i class="fas fa-pencil-alt fa-xs"></i></a>
+        <a class="button"><i class="far fa-trash-alt fa-xs"></i></a>
+    </li>
+    {% endfor %}
+  </ul>
   {% endif %}
 
 </div>

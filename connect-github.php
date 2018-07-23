@@ -46,6 +46,7 @@ else {
   if($data_exists['github_displayName'] === $userProfile->displayName) {
     echo '<p>Welcome back '.$userProfile->displayName.' !</p>';
     echo '<p><a href="./">Back to home</a></p>';
+    $_SESSION['welcome'] = TRUE;
   }
   else {
     echo '<br>displayName in the database is different then the one received from Github. WTF ?';
