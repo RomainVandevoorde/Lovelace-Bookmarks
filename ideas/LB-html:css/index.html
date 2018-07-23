@@ -10,37 +10,23 @@
     <title>Lovelace 2.0</title>
 </head>
 <body>
-    <main class="columns">
-        <section class="column index">
-            <h1><a href="index.html">Lovelace 2.0</a></h1>
-            <nav>
-                <!-- <a class="button" href="add.html">Add</i></a>
-                <a class="button" href="edit.html">Edit</a> -->
-                <a class="button" href="about-out.html">About</a>
-                <a class="button is-info" href="home.html"><i class="fab fa-github"></i>Log In</a>
-            </nav>
-            <div class="indexList">
-                <h2>Index</h2>
-                <ol>
-                    <li><a href="category.html">Learning</a></li>
-                    <li><a href="category.html">GitHub</a></li>
-                    <li><a href="category.html">HTML</a></li>
-                    <li><a href="category.html">CSS</a></li>
-                    <li><a href="category.html">Bootstrap</a></li>
-                    <li><a href="category.html">SASS</a></li>
-                    <li><a href="category.html">Javascript</a></li>
-                    <li><a href="category.html">PHP</a></li>
-                    <li><a href="category.html">References</a></li>
-                    <li><a href="category.html">Youtube Channels</a></li>
-                </ol>
-             </div>
-        </section>
-        <section class="column content is-three-fifths">
-            <div class="contentList">
-           <h2 class="hello">Hey, looking for something?</h2>
-           <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
-           </div>
-        </section>
-    </main>
+  <main class="columns">
+    <section class="column index">
+      <h1><a href="index.html">Lovelace 2.0</a></h1>
+      <nav>
+        <a class="button" href="about-out.html">About</a>
+        <a class="button is-info" href="home.html"><i class="fab fa-github"></i>Log In</a>
+      </nav>
+      {{ include('categories-v2.html') }}
+    </section>
+    <section class="column content is-three-fifths">
+      {% block rightcontent %}
+      <div class="contentList">
+        <h2 class="hello">Hey, looking for something?</h2>
+        <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
+      </div>
+      {% endblock %}
+    </section>
+  </main>
 </body>
 </html>

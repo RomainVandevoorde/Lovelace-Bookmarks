@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+
+{% block rightcontent %}
+<div class="contentList">
+
+  {% if user is defined %}
+  <h2 class="hello">Hey {{ user.name }}, welcome!</h2>
+  <div class="gif"><iframe src="https://giphy.com/embed/rDDv72OIYB39K"></iframe></div>
+  <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Github Profile</a></li>
+      <li><a href="#">Bonus</a></li>
+      <li class="mobile"><a href="edit.html">Edit</a></li>
+      <li class="mobile"><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% if haerror is defined %}
+    <p>{{ haerror }}</p>
+  {% endif %}
+
+</div>
+{% endblock %}

@@ -2,69 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <link rel="stylesheet" href="assets/style.css">
-  <title>Lovelace Bookmarks</title>
+  <title>Lovelace 2.0</title>
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="index.php">Accueil</a></li>
-      <li><a href="bookmarks.php">Bookmarks</a></li>
-      <li><a href="bookmark.php?action=add">Ajout</a></li>
-      <li><a href="category2.php">Catégories</a></li>
-      <li><a href=""></a></li>
-    </ul>
-  </nav>
-
-  {% if errors is defined %}
-  <div style="border: 1px solid red">
-    {% for error in errors %}
-    <p>{{ error }}</p>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  {% block content %}
-  <p>Content</p>
-  {% endblock %}
-
   <main class="columns">
-      <section class="column index">
-          <h1><a href="index.html">Lovelace 2.0</a></h1>
-          <nav>
-                  <!-- <a class="button" href="add.html">Add</i></a>
-                  <a class="button" href="edit.html">Edit</a> -->
-                  <a class="button" href="about-out.html">About</a>
-                  <a class="button is-info" href="home.html"><i class="fab fa-github"></i>Log In</a>
-          </nav>
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-          </a>
 
-           {% block leftcontent %}
-           <p>Left Content</p>
-           {% endblock %}
-      </section>
-      <section class="column content is-three-fifths">
-          <div class="contentList">
-         <h2 class="hello">Hey, looking for something?</h2>
-         <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
-         <!-- <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>  -->
-          <!-- <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
-              <ul>
-                <li><a href="#">Github Profile</a></li>
-                <li><a href="#">Bonus</a></li>
-              </ul>
-            </nav> -->
-         </div>
-      </section>
+    {% if errors is defined %}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        <h3>Errors</h3>
+        <ul>
+          {% for error in errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <section class="column index">
+
+      <h1><a href="index.php">Lovelace 2.0</a></h1>
+      <nav>
+        <a class="button" href="about.php">About</a>
+        {% if user is defined %}
+        <a class="button" href="bookmark.php?action=add">Add</i></a>
+        <a class="button desktop" href="profile.php">Edit</a>
+        <a class="button" href="logout.php"><i class="fab fa-github"></i>Log Out</a>
+        {% else %}
+        <a class="button is-info" href="login.php"><i class="fab fa-github"></i>Log In</a>
+        {% endif %}
+      </nav>
+      {{ include('categories-v2.html') }}
+    </section>
+    <section class="column content is-three-fifths">
+      {% block rightcontent %}
+      <div class="contentList">
+        <h2 class="hello">Hey, looking for something?</h2>
+        <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
+      </div>
+      {% endblock %}
+    </section>
   </main>
 
 </body>

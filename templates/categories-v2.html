@@ -1,19 +1,8 @@
-{% extends main.html %}
-
-{% block leftcontent %}
 <div class="indexList">
-    <h2>Index</h2>
-    <ol>
-        <li><a href="category.html">Learning</a></li>
-        <li><a href="category.html">GitHub</a></li>
-        <li><a href="category.html">HTML</a></li>
-        <li><a href="category.html">CSS</a></li>
-        <li><a href="category.html">Bootstrap</a></li>
-        <li><a href="category.html">SASS</a></li>
-        <li><a href="category.html">Javascript</a></li>
-        <li><a href="category.html">PHP</a></li>
-        <li><a href="category.html">References</a></li>
-        <li><a href="category.html">Youtube Channels</a></li>
-    </ol>
- </div>
-{% endblock %}
+  <h2>Catégories</h2>
+  <ol>
+    {% for category in categories %}
+    <li><a href="category2.php?id={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ol>
+</div>
