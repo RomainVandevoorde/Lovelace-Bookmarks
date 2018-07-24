@@ -2,7 +2,13 @@
 
 session_start();
 
-if(isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
+if(isset($_SESSION['user_id'])) {
+  unset($_SESSION['user_id']);
+  $_SESSION['notifications'][] = array(
+    'class' => 'is-info',
+    'messages' => array('Logged out.')
+  );
+}
 if(isset($_SESSION['rights'])) unset($_SESSION['rights']);
 
 ?>

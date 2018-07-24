@@ -6,7 +6,14 @@ if(isset($_GET['action'])) {
 
   switch ($_GET['action']) {
     case 'add':
-      if(!hasRights(1)) echo $twig->render('bookmarks-list.html', array('errors'=>array("You don't have sufficient rights to add a bookmark")));
+      if(!hasRights(1)) {
+        //echo $twig->render('bookmarks-list.html', array('errors'=>array("You don't have sufficient rights to add a bookmark")));
+        $_SESSION['notifications'][] = array(
+          'class' => 'is-warning',
+          'messages' => array("You don't have sufficient rights to add a bookmark.")
+        );
+        header('Location: index.php');
+      }
       else echo $twig->render('forms/bookmark-add.html');
       exit;
       break;

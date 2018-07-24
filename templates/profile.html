@@ -10,14 +10,20 @@
     {% else %}
     <h2 class="hello">Hello, {{ user.name }} !</h2>
     {% endif %}
-  <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
+
+    {% set rightNames = ["Guest", "Member", "Admin"] %}
+    {% if SESSION.user_id is defined and SESSION.rights is defined %}
+    <p><strong>Your ID :</strong> {{ SESSION.user_id }} / <strong>Your rights level :</strong> {{ rightNames[SESSION.rights] }}</p>
+      {% if SESSION.rights == 0 %}
+      <p style="font-style:italic; color:darkred">Demandez à Rominou de vous donner les droits ;)</p>
+      {% endif %}
+    {% endif %}
+  <!-- <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
     <ul>
       <li><a href="#">Github Profile</a></li>
       <li><a href="#">Bonus</a></li>
-      <li class="mobile"><a href="edit.html">Edit</a></li>
-      <li class="mobile"><a href="about.html">About</a></li>
     </ul>
-  </nav>
+  </nav> -->
   {% endif %}
 
   {% if bookmarks is defined %}

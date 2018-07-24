@@ -25,9 +25,22 @@
     </div>
     {% endif %}
 
+    {% if SESSION.notifications is defined and SESSION.notifications|length > 0 %}
+      {% for notif in SESSION.notifications %}
+        <div class="notification {{ (notif.class is defined) ? notif.class : is-danger }}">
+            <button class="delete"></button>
+            <ul>
+              {% for message in notif.messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+        </div>
+      {% endfor %}
+    {% endif %}
+
     <section class="column index">
 
-      <h1><a href="index.php">Lovelace 2.0</a></h1>
+      <h1><a href="index.php">Bookmarks Alpha</a></h1>
       <nav>
         {% if user is defined %}
         <a class="button" href="bookmark.php?action=add">Add</i></a>
@@ -46,9 +59,9 @@
       <div class="contentList">
         <h2 class="hello">Hey, looking for something?</h2>
         <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
-        {% if GET.welcome is defined %}
-          <div>{{ GET.welcome }}</div>
-        {% endif %}
+        <div style="margin-top:2em;">
+          <p>Après vous être inscrits, votre compte devra être validé pour que vous puissiez ajouter des bookmarks. Attendez un peu ou prévenez l'un de nous pour qu'on active directement votre compte ;)</p>
+        </div>
       </div>
       {% endblock %}
     </section>

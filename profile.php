@@ -29,4 +29,8 @@ if(isset($_SESSION['welcome'])) {
 
 echo $twig->render('profile.html', $render_data);
 
+
+
+$_SESSION['notifications'] = array();
+
 ?>

@@ -41,6 +41,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['rights'])) {
 }
 
 $twig->addGlobal('GET', $_GET);
+$twig->addGlobal('SESSION', $_SESSION);
 
 require_once __DIR__.'/auth-fct.php';
 
