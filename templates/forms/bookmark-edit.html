@@ -2,6 +2,7 @@
 
 {% block rightcontent %}
 
+<div class="contentList">
 <h2>Edit</h2>
 <form class="add" action="api/bookmark-edit.php" method="post">
   <input type="hidden" name="id" value="{{ id }}">
@@ -43,8 +44,9 @@
             <button class="button is-primary" role="submit">Submit</button>
         </div>
         <div class="control">
-            <button class="button"><a href="edit.html">Cancel</a></button>
+            <button class="button"><a href="profile.php">Cancel</a></button>
         </div>
     </div>
   </form>
+  </div>
 {% endblock %}

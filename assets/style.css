@@ -82,6 +82,7 @@ header{
     background-color: #f3f3f3;
     box-shadow: -4px 0px 20px 0px  #A9A9A9;
     z-index: 10;
+    height: 100vh !important;
 }
 
 .contentList{
@@ -97,13 +98,14 @@ header{
     margin-bottom: 20px;
     padding-bottom: 15px; 
     border-bottom: 1px solid #4a4a4a;
+    padding-left: 0px;
 }   
 
 .contentList h4{
     box-sizing: content-box;
     margin-bottom: 10px;
-    margin-left: 10px;
-    margin-top: 50px;
+    margin-left: 0px;
+    margin-top: 40px;
 }   
 
 .contentList ul{
@@ -266,6 +268,27 @@ section.log{
     display: none;
 }
 
+.content h5{
+    margin-top: 50px;
+}
+
+a.feed{
+    margin-top: 40px;
+}
+
+a.feedbk{
+    margin-top: 40px;
+}
+
+p.feedback{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.feed{
+    display: none;
+}
+
 @media screen and (max-width: 900px) {
     .indexList ol {
         margin-left: -45px;
@@ -293,7 +316,7 @@ section.log{
     .index h1{
         font-size: 40px;
         padding-top: 9px;
-        padding-left: 30px;
+        padding-left: 20px;
         margin-left: 0px;
         background-color: #3273dc;
         width: 100%;
@@ -315,7 +338,7 @@ section.log{
     } 
 
     .indexList h2::after {
-        background-image: url('img/chevron-down-solid.svg');
+        background-image: url('../assets/img/chevron-down-solid.svg');
         background-size: 22px 22px;
         background-repeat: no-repeat;
         display: inline-block;
@@ -343,7 +366,7 @@ section.log{
     }
 
     .indexList h2::after {
-        background-image: url('img/chevron-up-solid.svg');
+        background-image: url('../assets/img/chevron-up-solid.svg');
         background-size: 22px 22px;
         background-repeat: no-repeat;
         display: inline-block;
@@ -359,7 +382,7 @@ section.log{
     } 
 
     .contentList p{
-        padding-left: 10px;
+        padding-left: 0px;
         padding-right: 10px;
     } 
 
@@ -379,6 +402,7 @@ section.log{
     .content{
         box-shadow: none;
         margin-top: 0px;
+        height: 100vh;
     }
     nav.breadcrumb {
         margin-left: 0px;   
@@ -407,7 +431,7 @@ section.log{
         justify-content: space-between; 
     }
 
-    .add{
+   .add{
         width: 94%;
         padding-left: 5px; 
     }
@@ -420,7 +444,7 @@ section.log{
     .notification{
         position: absolute;
         width: 35%;
-    }    
+    }   
 }
 
 @media screen and (max-width: 640px) {
@@ -474,6 +498,10 @@ a.titleMobile{
     display: block;
 }
 
+.feed{
+    display: inline-flex;
+}
+
 }
 
 @media screen and (max-width: 500px) {
@@ -481,6 +509,10 @@ a.titleMobile{
 .index h1{
 font-size: 1.3em;
 padding: 19.5px;
+}
+
+.contentList h2{
+    font-size: 30px;
 }
 
 }

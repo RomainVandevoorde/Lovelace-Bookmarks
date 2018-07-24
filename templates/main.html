@@ -41,13 +41,13 @@
 
     <section class="column index">
 
-      <h1><a href="index.php">Bookmarks Alpha</a></h1>
+      <h1><a href="index.php">Lovelace 2.0</a></h1>
       <nav>
-        <a href="https://github.com/RomainVandevoorde/Lovelace-Bookmarks/issues" class="button">Feedback</a>
         {% if user is defined %}
+        <!-- <a href="https://github.com/RomainVandevoorde/Lovelace-Bookmarks/issues" class="button">Feedback</a> -->
         <a class="button" href="bookmark.php?action=add">Add</i></a>
         <a class="button desktop" href="profile.php">Profile</a>
-        <a class="button" href="about.php">About</a>
+        <a class="button desktop" href="about.php">About</a>
         <a class="button" href="logout.php"><i class="fab fa-github"></i>Log Out</a>
         {% else %}
           <a class="button" href="about.php">About</a>
@@ -61,9 +61,13 @@
       <div class="contentList">
         <h2 class="hello">Hey, looking for something?</h2>
         <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
-        <div style="margin-top:2em;">
-          <p>Après vous être inscrits, votre compte devra être validé pour que vous puissiez ajouter des bookmarks. Attendez un peu ou prévenez l'un de nous pour qu'on active directement votre compte ;)</p>
-        </div>
+        {% if user is defined %}
+        <a class="button feedbk is-info" target="_blank" href="https://github.com/RomainVandevoorde/Lovelace-Bookmarks/issues/new">Feedback</a>
+        <a class="button mobile-only feed" href="profile.php">Profile</a>
+        <a class="button feed mobile-only" href="about.php">About</a>
+        {% else %}
+        <a class="button feed" target="_blank" href="https://github.com/RomainVandevoorde/Lovelace-Bookmarks/issues/new">Feedback</a>
+        {% endif %}
       </div>
       {% endblock %}
     </section>
