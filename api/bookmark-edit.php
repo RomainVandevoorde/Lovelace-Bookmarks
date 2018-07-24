@@ -1,6 +1,6 @@
 <?php
 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
 session_start();
 
@@ -40,7 +40,27 @@ if(strlen($up_descr) > 200) exit('too long description');
 
 $req = $bdd->prepare("UPDATE bookmarks SET titre = ?, url = ?, category_id = ?, description = ? WHERE id = ?");
 if($req->execute(array($up_title, $up_url, $up_cat, $up_descr, $data['id']))) {
-  exit('<p>success !</p> <p><a href="../bookmark.php?id='.$id.'">See bookmark</a></p>');
+  ?>
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Redirect</title>
+    </head>
+    <body>
+      <h2>Success !</h2>
+      <h3>Redirecting...</h3>
+      <script type="text/javascript">
+        window.onload = () => {
+          window.setTimeout(function(){
+            window.location.replace("../profile.php");
+          }, 2000);
+        }
+      </script>
+    </body>
+  </html>
+
+  <?php
 }
 else {
   exit('failed');

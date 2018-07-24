@@ -2,25 +2,7 @@
 
 header('Content-Type: application/json');
 
-function exitJson($success, $errors = 'Unexpected Error') {
-  if($success) exit(json_encode(array('success' => TRUE)));
-  else {
-    if(gettype($errors) !== 'array') $errors = array($errors);
-    exit(json_encode(array('success' => FALSE, 'errors' => $errors)));
-  }
-}
-
-function validateUrl($url) {
-  $parse = parse_url($url);
-
-  // Check the URL's protocol
-  if(!isset($parse['scheme'])) $url = 'https://'.$url;
-  elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') return FALSE;
-
-  if(filter_var($url, FILTER_VALIDATE_URL) === false) return FALSE;
-
-  return $url;
-}
+require_once __DIR__.'/../includes/validate-fct.php';
 
 // *******************
 //
