@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/ajax.js" charset="utf-8"></script>
+  <title>Lovelace 2.0</title>
+</head>
+<body>
+
+  <main class="columns">
+
+    {% if errors is defined %}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        <h3>Errors</h3>
+        <ul>
+          {% for error in errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if SESSION.notifications is defined and SESSION.notifications|length > 0 %}
+      {% for notif in SESSION.notifications %}
+        <div class="notification {{ (notif.class is defined) ? notif.class : is-danger }}">
+            <button class="delete"></button>
+            <ul>
+              {% for message in notif.messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <section class="column index">
+
+      <h1><a href="index.php">Bookmarks Alpha</a></h1>
+      <nav>
+        <a href="https://github.com/RomainVandevoorde/Lovelace-Bookmarks/issues" class="button">Feedback</a>
+        {% if user is defined %}
+        <a class="button" href="bookmark.php?action=add">Add</i></a>
+        <a class="button desktop" href="profile.php">Profile</a>
+        <a class="button" href="about.php">About</a>
+        <a class="button" href="logout.php"><i class="fab fa-github"></i>Log Out</a>
+        {% else %}
+          <a class="button" href="about.php">About</a>
+        <a class="button is-info" href="connect-github.php"><i class="fab fa-github"></i>Log In</a>
+        {% endif %}
+      </nav>
+      {{ include('categories-v2.html') }}
+    </section>
+    <section class="column content is-three-fifths">
+      {% block rightcontent %}
+      <div class="contentList">
+        <h2 class="hello">Hey, looking for something?</h2>
+        <div class="gif"><iframe src="https://giphy.com/embed/l4Ep99Cnz8D6P6lnq"></iframe></div>
+        <div style="margin-top:2em;">
+          <p>Après vous être inscrits, votre compte devra être validé pour que vous puissiez ajouter des bookmarks. Attendez un peu ou prévenez l'un de nous pour qu'on active directement votre compte ;)</p>
+        </div>
+      </div>
+      {% endblock %}
+    </section>
+  </main>
+
+</body>
+</html>

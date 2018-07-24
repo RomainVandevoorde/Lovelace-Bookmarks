@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+{% block rightcontent %}
+<div class="contentList">
+
+  {% if user is defined %}
+    {% if welcome is defined %}
+    <h2 class="hello">Hey {{ user.name }}, welcome back !</h2>
+    <div class="gif"><iframe src="https://giphy.com/embed/rDDv72OIYB39K"></iframe></div>
+    {% else %}
+    <h2 class="hello">Hello, {{ user.name }} !</h2>
+    {% endif %}
+
+    {% set rightNames = ["Guest", "Member", "Admin"] %}
+    {% if SESSION.user_id is defined and SESSION.rights is defined %}
+    <p><strong>Your ID :</strong> {{ SESSION.user_id }} / <strong>Your rights level :</strong> {{ rightNames[SESSION.rights] }}</p>
+      {% if SESSION.rights == 0 %}
+      <p style="font-style:italic; color:darkred">Demandez à Rominou de vous donner les droits ;)</p>
+      {% endif %}
+    {% endif %}
+  <!-- <nav class="breadcrumb indexLinks" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Github Profile</a></li>
+      <li><a href="#">Bonus</a></li>
+    </ul>
+  </nav> -->
+  {% endif %}
+
+  {% if bookmarks is defined %}
+  <h4>Here are your bookmarks:</h4>
+    {% for bookmark in bookmarks %}
+    <ul class="edit">
+    <li>
+      <a href="{{ bookmark.url }}">{{ bookmark.titre }}</a>
+      <p>{{ bookmark.description }}</p>
+    </li>
+    <li class="edit">
+        <a class="button" href="bookmark.php?action=edit&id={{ bookmark.id }}"><i class="fas fa-pencil-alt fa-xs"></i></a>
+        <a class="button"><i class="far fa-trash-alt fa-xs"></i></a>
+    </li>
+  </ul>
+    {% endfor %}
+  {% endif %}
+
+</div>
+{% endblock %}
