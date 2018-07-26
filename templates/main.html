@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/style.css">
   <script defer src="assets/ajax.js" charset="utf-8"></script>
   <title>Lovelace 2.0</title>
@@ -72,6 +73,14 @@
       {% endblock %}
     </section>
   </main>
-
+  <script type="text/javascript">
+  // Notification
+  $( ".notification" ).delay(3200).fadeOut(300);
+      $(function(){       
+          $(".delete").click(function(){
+            $(this).parent().hide();
+          });
+      });
+  </script>
 </body>
 </html>

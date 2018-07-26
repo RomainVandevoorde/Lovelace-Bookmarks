@@ -77,7 +77,9 @@ function request(method,action,parameters,callback) {
 }
 
 let err = document.createElement("p");
-forms[0].appendChild(err);
+if(typeof forms[0] !== 'undefined'){
+  forms[0].appendChild(err);
+}
 
 function reply(response){
   console.log(response);

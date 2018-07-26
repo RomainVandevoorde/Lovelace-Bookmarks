@@ -1,9 +1,30 @@
+@font-face {
+    font-family: "SF Pro Regular";
+    src: url("../assets/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF Pro Bold";
+    src: url("../assets/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+}   
+
+@font-face {
+    font-family: "SF Pro Semi-Bold";
+    src: url("../assets/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+}   
+
+@font-face {
+    font-family: "SF Pro Italic";
+    src: url("../assets/fonts/SF-Pro-Display-RegularItalic.otf") format("opentype");
+} 
+
 *{
     box-sizing: content-box;
 }
 
 html, body{
     max-height: 100vh;
+    font-family: "SF Pro Regular";
 }
 
 header{
@@ -14,11 +35,11 @@ header{
     padding: 30px;
     padding-bottom: 5px;
     font-size: 40px;  
-    font-weight: bold;
 }
 
 .index h1 a{
     color: #4a4a4a;
+    font-family: "SF Pro Semi-Bold";
 }
 
 .index h1 a:hover{
@@ -59,10 +80,10 @@ header{
 }
 
 .indexList h2{
-    font-weight: bolder;
     margin-bottom: 30px;
     font-size: 30px;
     margin-left: -70px;
+    font-family: "SF Pro Semi-Bold";
 }
 
 .indexList ol{
@@ -99,6 +120,8 @@ header{
     padding-bottom: 15px; 
     border-bottom: 1px solid #4a4a4a;
     padding-left: 0px;
+    font-family: "SF Pro Semi-Bold";
+    font-weight: normal;
 }   
 
 .contentList h4{
@@ -150,6 +173,7 @@ nav.breadcrumb{
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 0em;
+    font-family: "SF Pro Regular";
 }
 
 .contentList iframe{
@@ -281,12 +305,32 @@ a.feedbk{
 }
 
 p.feedback{
-    font-weight: bold;
+    font-family: "SF Pro Semi-Bold";
     font-size: 18px;
 }
 
 .feed{
     display: none;
+}
+
+label{
+    font-family: "SF Pro Semi-Bold";
+}
+
+strong{
+    font-family: "SF Pro Semi-Bold";
+}
+
+i{
+    font-family: "SF Pro Italic";
+}
+
+.input{
+    font-family: "SF Pro Regular"; 
+}
+
+.textarea{
+    font-family: "SF Pro Regular";  
 }
 
 @media screen and (max-width: 900px) {
@@ -330,11 +374,22 @@ p.feedback{
         padding-top: 10px;
     }
 
-    .indexList h2 {
+    /* .indexList h2 {
         margin-left: 30px;
         font-size: 40px;
         margin-bottom: 0px;
         float: left;
+        position: absolute;
+        top: 72px;
+    }  */
+
+    .indexList h2#h2id {
+        margin-left: 20px;
+        font-size: 40px;
+        margin-bottom: 0px;
+        float: left;
+        position: absolute;
+        top: 72px;
     } 
 
     .indexList h2::after {
@@ -353,7 +408,19 @@ p.feedback{
         padding-top: 68px;
     }
 
+    .buttonIndex{
+        width: 100vw;
+        display: block;
+        height: 65px;
+        /* position: absolute; */
+        cursor: pointer;
+        z-index: 1000;
+    }
+
     .indexList ol{
+        padding-top: 20px;
+        margin-left: 55px;
+        padding-bottom: 20px;
         display: none;
     }
 
