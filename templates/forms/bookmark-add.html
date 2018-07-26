@@ -3,7 +3,7 @@
 {% block rightcontent %}
 <div class="contentList">
   <h2>Add</h2>
-  <form class="add" action="api/bookmark-add.php" method="post">
+  <form class="add" action="api/bookmark-add.php" method="post" name="form1" onsubmit="required()">
     <div class="control-container">
       <div class="control">
         <label class="label">Topic</label>
@@ -47,4 +47,34 @@
     </div>
   </form>
 </div>
+<script>
+  function required()
+    {
+    var a = document.forms["form1"]["title"];
+    var b = document.forms["form1"]["url"];
+    var c = document.forms["form1"]["category"];
+    var c1 = document.getElementsByClassName("select");
+    if (a.value == "")
+    {
+      a.className = 'input is-danger';
+    return false;
+    }
+    else if(b.value == "" || b.value == null){
+      b.className = 'input is-danger';
+      return false;
+    }
+    else if(c.value == 0){
+      c1.className = 'select is-danger';
+      return false;
+    }
+    else 
+    {
+      a.className = 'input is-success';
+      b.className = 'input is-success';
+      c1.className = 'select is-success';
+      // empt.classList.add("is-success");
+    return true; 
+    }
+  }
+</script>
 {% endblock %}
