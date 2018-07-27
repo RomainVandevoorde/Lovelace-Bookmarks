@@ -22,8 +22,6 @@ try {
   exit('<p>Failed to fetch profile</p><p>'.$e->getMessage().'</p>');
 }
 
-echo '<p>Github Auth: Success</p>';
-
 require_once __DIR__.'/db.php';
 
 $req_exists = $bdd->prepare("SELECT * FROM users WHERE github_id = ?");
@@ -35,19 +33,35 @@ if($data_exists === FALSE) {
   // User does not yet exist, create the account
   $req_newuser = $bdd->prepare("INSERT INTO users (github_displayName, github_id, rights) VALUES (?, ?, 0)");
   $res = $req_newuser->execute(array($userProfile->displayName, $userProfile->identifier));
+  // On success, connect user and redirect to profile
   if($res) {
-    echo '<p>Your account was successfully created !</p>';
-    echo '<p><a href="./">Go back to home to finish the creation of your account</a></p>';
-    $_SESSION['github_id'] = $userProfile->identifier;
+    $_SESSION['user_id'] = $bdd->lastInsertId();
+    $_SESSION['rights'] = 0;
+    $_SESSION['notifications'][] = array(
+      'class' => 'is-success',
+      'messages' => array('Your account was successfully created !')
+    );
+    header('Location: profile.php');
   }
-  else echo '<p>Failed to create your account</p>';
+  // On failure, redirect to index
+  else {
+    $_SESSION['notifications'][] = array(
+      'class' => 'is-danger',
+      'messages' => array('Failed to create your account :(')
+    );
+    header('Location: index.php');
+  }
 }
 else {
   $_SESSION['user_id'] = $data_exists['id'];
   $_SESSION['rights'] = $data_exists['rights'];
   if($data_exists['github_displayName'] === $userProfile->displayName) {
-    echo '<p>Welcome back '.$userProfile->displayName.' !</p>';
-    echo '<p><a href="./">Back to home</a></p>';
+    $_SESSION['welcome'] = TRUE;
+    $_SESSION['notifications'][] = array(
+      'class' => 'is-success',
+      'messages' => array('Successfully logged in ! :)')
+    );
+    header('Location: profile.php');
   }
   else {
     echo '<br>displayName in the database is different then the one received from Github. WTF ?';

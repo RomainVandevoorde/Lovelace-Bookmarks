@@ -1,12 +1,52 @@
 {% extends "main.html" %}
 
-{% block content %}
-<form action="api/bookmark-edit.php" method="post">
+{% block rightcontent %}
+
+<div class="contentList">
+<h2>Edit</h2>
+<form class="add" action="api/bookmark-edit.php" method="post">
   <input type="hidden" name="id" value="{{ id }}">
-  <label>Titre: <input type="text" name="title" value="{{ titre ?: '' }}"></label><br>
-  <label>URL: <input type="text" name="url" value="{{ url ?: '' }}"></label><br>
-  <label>Catégorie: <input type="number" name="category" value="{{ category_id ?: 1 }}"></label><br>
-  <label>Description: <textarea name="description" rows="8" cols="80">{{ description ?: '' }}</textarea></label><br>
-  <input type="submit" value="Send">
-</form>
+    <div class="control-container">
+        <div class="control">
+         <label class="label">Topic</label>
+        <div class="select">
+            <select name="category">
+              {% for category in categories %}
+              <option {{ (category.id == category_id)? 'selected="selected"':'' }} value="{{ category.id }}">{{ category.name }}</option>
+              {% endfor %}
+              <option value="5">lol</option>
+            </select>
+        </div>
+        </div>
+    </div>
+    <div class="field-container">
+        <div class="field">
+        <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" value="{{ titre ?: '' }}" name="title">
+            </div>
+        </div>
+        <div class="field">
+        <label class="label">Link</label>
+            <div class="control">
+                <input class="input" type="text" value="{{ url ?: '' }}" name="url">
+            </div>
+        </div>
+        <div class="field">
+        <label class="label">About</label>
+            <div class="control">
+                <textarea class="textarea" name="description">{{ description ?: '' }}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <div class="control">
+            <button class="button is-primary" role="submit">Submit</button>
+        </div>
+        <div class="control">
+            <button class="button"><a href="profile.php">Cancel</a></button>
+        </div>
+    </div>
+  </form>
+  </div>
 {% endblock %}

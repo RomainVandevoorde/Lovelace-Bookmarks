@@ -1,0 +1,23 @@
+<div class="indexList">
+  <div class="buttonIndex"></div>
+    <!-- <h2>Index</h2> -->
+    <h2 id="h2id">Index</h2>
+  <ol>
+    {% for category in categories %}
+    <li><a href="category2.php?id={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ol>
+</div>
+
+<!-- Menu deroulant Mobile -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+          $('#h2id').click(function(){
+            if($('ol').is( ":hidden" )){
+            $('ol').slideDown("slow");
+            }else{
+            $('ol').slideUp("slow");
+            }
+          });
+      });   
+  </script>

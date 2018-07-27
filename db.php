@@ -1,7 +1,7 @@
 <?php
     error_reporting(E_ALL);
     try{
-        $bdd = new PDO('mysql:host=localhost;dbname=lovelace_bookmarks;charset=utf8', 'root', 'user');
+        $bdd = new PDO('mysql:host=localhost;dbname=lovelace_bookmarks;charset=utf8', 'root', 'root');
 
 
     }
@@ -9,6 +9,7 @@
         die('Erreur : '.$e->getMessage());
 
     }
+
 
 // h // ??
 // include 'db.php'; // ???

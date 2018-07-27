@@ -50,6 +50,7 @@ function getChilds(target){
   let childs = [];
   let inputs = target.getElementsByTagName("input");
   let textAreas = target.getElementsByTagName("textarea");
+  let selects = target.getElementsByTagName("select");
   for (let i = 0; i < inputs.length; i++) {
     if(inputs[i].type != "submit"){
       childs.push(inputs[i]);
@@ -57,6 +58,9 @@ function getChilds(target){
   }
   for (let i = 0; i < textAreas.length; i++) {
     childs.push(textAreas[i]);
+  }
+  for(let i = 0; i < selects.length; i++) {
+    childs.push(selects[i]);
   }
   return childs;
 }
@@ -72,12 +76,21 @@ function request(method,action,parameters,callback) {
 	xhr.send(parameters);
 }
 
+let err = document.createElement("p");
+if(typeof forms[0] !== 'undefined'){
+  forms[0].appendChild(err);
+}
+
 function reply(response){
-  // à définir :p
+  console.log(response);
   let json = JSON.parse(response);
+  console.log(json);
   if(json.success){
     console.log("Champagne!!!!!!!");
+    err.innerHTML = "Success !";
+    window.location.replace("profile.php");
   }else{
     console.log("Fond de bière tiède :(");
+    err.innerHTML = json.errors[0];
   }
 }

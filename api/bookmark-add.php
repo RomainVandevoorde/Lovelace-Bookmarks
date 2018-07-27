@@ -2,25 +2,7 @@
 
 header('Content-Type: application/json');
 
-function exitJson($success, $errors = 'Unexpected Error') {
-  if($success) exit(json_encode(array('success' => TRUE)));
-  else {
-    if(gettype($errors) !== 'array') $errors = array($errors);
-    exit(json_encode(array('success' => FALSE, 'errors' => $errors)));
-  }
-}
-
-function validateUrl($url) {
-  $parse = parse_url($url);
-
-  // Check the URL's protocol
-  if(!isset($parse['scheme'])) $url = 'https://'.$url;
-  elseif($parse['scheme'] !== 'http' && $parse['scheme'] !== 'https') return FALSE;
-
-  if(filter_var($url, FILTER_VALIDATE_URL) === false) return FALSE;
-
-  return $url;
-}
+require_once __DIR__.'/../includes/validate-fct.php';
 
 // *******************
 //
@@ -43,28 +25,31 @@ if(!isset($_POST['title']) || !isset($_POST['url'])) {
 }
 
 // If there's no category, use 1 as default
-if(!isset($_POST['category'])) {
-  $category = 1;
+$category = isset($_POST['category']) ? intval($_POST['category']) : 1;
+
+$v_cat = validateCategory($category);
+if($v_cat !== TRUE) $errors[] = $v_cat;
+elseif($category !== 1) {
+  require_once __DIR__.'/../db.php';
+  $req_cat = $bdd->prepare("SELECT * FROM categories WHERE id = ?");
+  $req_cat->execute(array($category));
+  $data_cat = $req_cat->fetch();
+  if(!$data_cat) $errors[] = "This category doesn't exist";
 }
 
 
 // Validate Title
-$title_length = strlen($_POST['title']);
-if($title_length < 2 || $title_length > 100) {
-  $errors []= 'This title is too short or too long (must be 2-100 characters)';
-}
+$v_title = validateTitle($_POST['title']);
+if($v_title !== TRUE) $errors[] = $v_title;
 
 // Validate URL
 $url = validateUrl($_POST['url']);
 if($url === FALSE) $errors[]= 'Invalid URL';
 
 // Validate description
-if(isset($_POST['description'])) {
-  $desc_length = strlen($_POST['description']);
-  if($desc_length > 300) $errors []= 'This description is too long';
-}
-// If no description was posted, put in an empty string
 $description = isset($_POST['description']) ? $_POST['description'] : "";
+$v_desc = validateDescription($description);
+if($v_desc !== TRUE) $errors[] = $v_desc;
 
 // Exit if there are errors
 if(!empty($errors)) {
